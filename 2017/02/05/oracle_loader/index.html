@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>oracle_loader | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="oracle loader 用法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="oracle_loader">
+<meta property="og:url" content="http://yoursite.com/2017/02/05/oracle_loader/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="oracle loader 用法">
+<meta property="og:updated_time" content="2017-02-05T09:06:31.284Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="oracle_loader">
+<meta name="twitter:description" content="oracle loader 用法">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-oracle_loader" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/05/oracle_loader/" class="article-date">
+  <time datetime="2017-02-05T09:08:07.281Z" itemprop="datePublished">2017-02-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      oracle_loader
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="oracle-loader-用法"><a href="#oracle-loader-用法" class="headerlink" title="oracle loader 用法"></a>oracle loader 用法</h5><a id="more"></a>
+<h6 id="shell文件："><a href="#shell文件：" class="headerlink" title="shell文件："></a>shell文件：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line">#############################</div><div class="line"># loader 用法</div><div class="line"># Writer: Yc</div><div class="line"># Mail: yc@fqiyou.com</div><div class="line">#############################</div><div class="line"></div><div class="line">nohup sqlldr userid=hr/hr control=&apos;emp.ctl&apos; log=&apos;emp.log&apos; direct=true &gt; sh.log 2&gt;&amp;1 &amp;;</div></pre></td></tr></table></figure>
+<h6 id="emp-ctl："><a href="#emp-ctl：" class="headerlink" title="emp.ctl："></a>emp.ctl：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">load data</div><div class="line">infile &apos;data.txt&apos;</div><div class="line">badfile &apos;data.bad&apos;</div><div class="line">append</div><div class="line">into table emp</div><div class="line">fields terminated by &apos;	&apos;</div><div class="line">trailing nullcols</div><div class="line">(EMPLOYEE_ID,EMAIL,MANAGER_ID)</div></pre></td></tr></table></figure>
+<h6 id="data-txt："><a href="#data-txt：" class="headerlink" title="data.txt："></a>data.txt：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">100	SKING</div><div class="line">101	NKOCHHAR	100</div><div class="line">102	LDEHAAN	100</div><div class="line">103	AHUNOLD	102</div><div class="line">104	BERNST	103</div><div class="line">105	DAUSTIN	103</div></pre></td></tr></table></figure>
+<ul>
+<li>用法解析</li>
+</ul>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left"></th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">load data</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">infile ‘data.txt’</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">指定数据文件</td>
+</tr>
+<tr>
+<td style="text-align:left">badfile ‘data.bad’</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">append</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">表后面追加</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">APPEND</td>
+<td style="text-align:left">表后面追加</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">INSERT</td>
+<td style="text-align:left">装载空表,如果有数据则失败</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">REPLACE</td>
+<td style="text-align:left">覆盖原有数据</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">TRUNCATE</td>
+<td style="text-align:left">truncate删除现存数据</td>
+</tr>
+<tr>
+<td style="text-align:left">into table emp</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">指定表</td>
+</tr>
+<tr>
+<td style="text-align:left">fields terminated by ‘    ‘</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">文件列的区分标志</td>
+</tr>
+<tr>
+<td style="text-align:left">trailing nullcols</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">没有填充空</td>
+</tr>
+<tr>
+<td style="text-align:left">(EMPLOYEE_ID,EMAIL,MANAGER_ID)</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">插入表中的相应的字段</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<hr>
+<p>注：Oracle</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/02/05/oracle_loader/" data-id="ciysg63lp0001icufjiyykpps" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/oracle-adminscripe/">oracle-adminscripe</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/02/05/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle-adminscripe/">oracle-adminscripe</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/oracle-adminscripe/" style="font-size: 10px;">oracle-adminscripe</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/02/05/oracle_loader/">oracle_loader</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/05/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
